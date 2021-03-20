@@ -14,11 +14,11 @@ button.onclick = e => {
 // 2.Գրել ծրագիր , որը կստուգի եթե այցելու էկրանի չափը փոքր է 768px ապա հղումը փոխի դեպի m.facebook.com,
 // այլապես facebook.com (location.replace())
 
-// if( screen.width < 768 ){
-//     window.location.replace('m.facebook.com');
-// } else {
-//     window.location.replace('facebook.com');
-// }
+if( screen.width < 768 ){
+    window.location.replace('m.facebook.com');
+} else {
+    window.location.replace('facebook.com');
+}
 
 
 ///////////////////////////////////////////////////
@@ -52,6 +52,15 @@ testForm.onsubmit = (e) => {
 
 console.log(checkBrowser());
 
+//HTML -------------------------------
+/*
+<form action="" id="testForm" name="testForm">
+    <input name="email" value="">
+    <input name="browser" type="hidden" value="">
+    <input type="submit" name="x" value="Submit">
+</form>
+*/
+
 /////////////////////////////////////////////////////////////
 // 4.Ունենք հղում դեպի sunnyschool.am:
 // Գրել ծրագիր որ այցելուն երբ սեղմի հղման լրացուցիչ հարց ստանա արդյոք հցում բացի նոր window թե նույնի  մեջ:
@@ -62,10 +71,7 @@ link.onclick = function(){
     link.target = ( targetBlank ) ? '_blank' : '_self';
 }
 
-/////////////////////////////////////////////////////////////
-// 5.Ունենք HTML,CSS,Bootstrap,JavaScript, jQuery, Node.JS զանգված:
-// Գրել ծրագիր որով այցելու կարող է թերթել այս ցանկի բոլոր անդամներ երբ սեղմի առաջ կամ հետ գնալու կոճակներ,
-// կամ ծրագիրը ավտոմատ 3 վարկյան մեկ փոխի:
-// Էջը բացելիս պետք է երևա զանգված առաջին անդամը, երբ առաջ գնալով հասնենք վերջին անդամին (Node.JS)
-// դրանից հետո առաջ սեղմելիս երևա կրկին առաջին անդամը, իսկ երբ առաջին անդամից հետ ուզենք գնանք երևա
-// զանգվածի վերջին անդամը (Նկ. Home5.jpg):
+// HTML ------------------------------
+/*
+<a id="link" href="https://sunnyschool.am">Sunny School</a>
+*/

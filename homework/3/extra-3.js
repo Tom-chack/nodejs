@@ -27,14 +27,14 @@ alert( checkAccess(age) ? 'Access granted' : 'Access denied' );
 
 //////////////////////////////////////////////////////////////////////////////
 // 4.Ինչ կլինի ներքոնշյալ կոդի արդյունքը և ինչու
-// var a={},
-// b={key:'b'},
-// c={key:'c'};
-//
-// a[b]=123;
-// a[c]=456;
-//
-// console.log(a[b]);
+var a={},
+b={key:'b'},
+c={key:'c'};
+
+a[b]=123;
+a[c]=456;
+
+console.log(a[b]);
 
 // The result will be 456.
 // Because both b and c will be tracked as [object Object] and the key of a object will be overwritten by the last assigned parameter.

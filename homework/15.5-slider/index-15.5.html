@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Homeworks 15.5</title>
+        <meta charset="UTF-8">
+        <style type="text/css">
+            *{
+                box-sizing: border-box;
+            }
+            #slider{
+                width: 300px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: stretch;
+            }
+            #show{
+                width: 90px;
+                text-align: center;
+                padding: 30px 0;
+            }
+            .button{
+                font-size: 30px;
+                text-align: center;
+                width: 100px;
+                background: #999;
+                color: #fff;
+                padding: 30px 0;
+                cursor: pointer;
+            }
+            #show{
+                margin: 0 10px;
+                border: 1px solid #999;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="slider">
+            <div id="prev" class="button">
+                &lt;
+            </div>
+            <div id="show" data-index="0"></div>
+            <div id="next" class="button">
+                &gt;
+            </div>
+        </div>
+        <script src="./homework-script-15.5.js"></script>
+    </body>
+</html>
