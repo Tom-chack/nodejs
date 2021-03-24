@@ -6,3 +6,4 @@ const fs = require('fs');
 let data = fs.readFileSync('./files/input.txt', 'utf-8');
 
 fs.writeFileSync( './files/write.txt', data.replace(/\s/gm, '-') );
+

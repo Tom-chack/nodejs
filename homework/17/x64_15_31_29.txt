@@ -1,0 +1,55 @@
+//1.  Գրել ծրագիր որը աշխատացնելիս console-ում կարտածի ամբողջ օպերատիվ հիշողության:
+
+let os = require('os');
+let prettyBytes = require('pretty-bytes');
+
+console.log( 'Total Memory: ' + prettyBytes( os.totalmem() ) );
+console.log( 'Free Memory: ' + prettyBytes( os.freemem() ) );
+
+console.log( 'Used Memory: ' + prettyBytes(os.totalmem() - os.freemem()) );//2. Գրել ծրագիր որ աշխատացնելիս console-ում կարտածի IPv4 IP հասցեն(os.networkInterfaces()):
+
+const os = require('os');
+console.log(os.networkInterfaces()['Беспроводная сеть'][1].address);//3.Գրել ծրագիր որը աշխատացնելիս կստեղծի 8 նիշանոց պատահական թվերից կազմված
+// անուն ունեցող txt ֆայլ և այդ ֆայի մեջ Օպերացիան համակարգի central processing unit (CPU)
+// քանակը(os.cpus()):
+
+const os = require('os');
+const fs = require('fs');
+const rand = require('random');
+
+let data = os.cpus().length.toString();
+
+console.log(data);
+
+let filename = rand.int(1e7,9e7) + '.txt';
+
+fs.writeFileSync('./files/' + filename, data);
+//4.Գրել ծրագիր որ աշխատացնելիս  input.txt կկարդա պարունակությունը ,
+// որից հետո այդ պարունակության բոլոր բացատները կփոխարին - ներով:
+// Այնուհետև գծիկներով տեքստ գրել write.txt ֆայլուն
+
+const fs = require('fs');
+let data = fs.readFileSync('./files/input.txt', 'utf-8');
+
+fs.writeFileSync( './files/write.txt', data.replace(/\s/gm, '-') );
+
+// 5.Գրել ծրագիր որ աշխատացնելիս sync կկարադա նախորդ չորս տնայիների ֆայլերի պարունակությունը
+// (Օրինակ homework1.js, homework2.js, homework3.js, homework4.js):
+// Այնուհետև ծրագիրը պետք է ստեղծի txt ֆայլ, որի անուն կազմված կլնի
+// օպերացոն համակարգի անունից և այդ պահին ժամ րոպե վարկյանից(win32_14_14_58.txt)
+// և այդ ֆայլում գրել նախորդ ֆայլերի պարունակությունը:
+
+const os = require('os');
+const fs = require('fs');
+const data = '';
+const date = new Date();
+const filename = os.arch() + '_' + date.getHours() + '_' + date.getMinutes() + '_' + date.getSeconds() + '.txt';
+fs.readdir( './', (err, files) => {
+    console.log(files);
+    files.forEach( file =>{
+        if( file && file.match( /\.js$/i ) ){
+            let content = fs.readFileSync( './' + file, 'utf-8' );
+            fs.writeFileSync('./' + filename, content, { flag: "a+" });
+        }
+    })
+})
