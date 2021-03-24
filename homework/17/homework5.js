@@ -9,7 +9,6 @@ const fs = require('fs');
 const date = new Date();
 const filename = os.platform + '_' + date.getHours() + '_' + date.getMinutes() + '_' + date.getSeconds() + '.txt';
 fs.readdir( './', (err, files) => {
-    console.log(files);
     files.forEach( file =>{
         if( file && file.match( /\.js$/i ) ){
             let content = fs.readFileSync( './' + file, 'utf-8' );
