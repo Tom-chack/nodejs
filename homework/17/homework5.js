@@ -6,7 +6,6 @@
 
 const os = require('os');
 const fs = require('fs');
-const data = '';
 const date = new Date();
 const filename = os.platform + '_' + date.getHours() + '_' + date.getMinutes() + '_' + date.getSeconds() + '.txt';
 fs.readdir( './', (err, files) => {
