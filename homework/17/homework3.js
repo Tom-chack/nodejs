@@ -6,7 +6,10 @@ const os = require('os');
 const fs = require('fs');
 const rand = require('random');
 
-let data = os.cpus.length.toString();
+let data = os.cpus().length.toString();
+
+console.log(data);
+
 let filename = rand.int(1e7,9e7) + '.txt';
 
 fs.writeFileSync('./files/' + filename, data);
