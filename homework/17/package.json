@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "pretty-bytes": "^5.6.0"
+    "pretty-bytes": "^5.6.0",
+    "random": "^3.0.3"
   }
 }
