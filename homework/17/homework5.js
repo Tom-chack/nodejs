@@ -8,7 +8,7 @@ const os = require('os');
 const fs = require('fs');
 const data = '';
 const date = new Date();
-const filename = os.arch() + '_' + date.getHours() + '_' + date.getMinutes() + '_' + date.getSeconds() + '.txt';
+const filename = os.platform + '_' + date.getHours() + '_' + date.getMinutes() + '_' + date.getSeconds() + '.txt';
 fs.readdir( './', (err, files) => {
     console.log(files);
     files.forEach( file =>{
