@@ -1,0 +1,12 @@
+1. homeworks.txt.gz ֆայլը unzip անել և պահապնել homework1.txt-ում :
+
+2. Գրել ծրագիր, որը կկոդավորի homeworks.txt և գաղտնաբառը կլինի Ձեր node versian, որը ավտոմատ կվերցնի process-ից:Արդյունքը պահել homework2c.txt ֆայլում:
+
+3.homework2c.txt արդյունքը դեկոդավորել և պահել homework3.txt-ում:
+
+4.Գրել ծրագիր, որը input.txt կստեղծի stream դեպի homework4.txt և  transform միջոցով միայն այնպես անել , որ միայն զույգ դիրքում գտնվող տողերը անցնեն:
+
+5.Ստեղծել RemoveSpecialChars կլաս, որը ժառանգում է  Transform կլասին: _transform մեթոդը վերասահմանել այնպես, որ իր միջով անցնող տեքստից հեռացնել հատուկ սիմվոլները:
+
+Կլասից ստեղծել օբեկտ: homeworkr5.txt պարունակությունը pipe անել օբեկտով և պահապանել homeworkw5.txt ֆայլում:
+
