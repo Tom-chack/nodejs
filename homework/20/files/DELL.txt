@@ -1,0 +1,1 @@
+{"uid":-1,"gid":-1,"username":"DELL","homedir":"C:\\Users\\DELL","shell":null}
