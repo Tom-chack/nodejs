@@ -13,7 +13,8 @@ const server = http.createServer( (req, res) => {
         let data = query.parse( chunk.toString() );
         fs.rename('./homework3.txt', './' + encodeURIComponent( data.name.trim() ) + '.txt', (e) => { if(e) console.log(e) } );
         res.end( 'Done!' );
-            });
+    });
+    
     req.on('end', () => {
         res.end( form() );
     });
