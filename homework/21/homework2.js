@@ -25,7 +25,7 @@ const server = http.createServer( (req, res) => {
     let url = new URL( 'http://' + req.headers.host + req.url );
     let firstName = url.searchParams.get('firstName');
     if( firstName ) {
-        res.end(firstName);
+        res.end( firstName );
     } else {
         res.end( form() );
     }
