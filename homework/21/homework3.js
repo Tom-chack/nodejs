@@ -9,14 +9,22 @@ const query = require('querystring');
 
 const server = http.createServer( (req, res) => {
 
+    let body = '';
+
     req.on('data', chunk => {
-        let data = query.parse( chunk.toString() );
-        fs.rename('./homework3.txt', './' + encodeURIComponent( data.name.trim() ) + '.txt', (e) => { if(e) console.log(e) } );
-        res.end( 'Done!' );
+        body += chunk;
     });
-    
+
     req.on('end', () => {
-        res.end( form() );
+        if( req.method == 'POST' ){
+            let data = query.parse( body );
+            let source = './homework3.txt';
+            let target = './' + data.name.trim().replace(/[^a-z0-9]/gi, '_') + '.txt';
+            fs.renameSync(source, target);
+            res.end( 'Done!' );
+        } else {
+            res.end( form() );
+        }
     });
 
 });
