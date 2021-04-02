@@ -7,8 +7,7 @@ const fs = require('fs');
 const http = require('http');
 
 const server = http.createServer( (req, res) => {
-
-    let message = form();
+    
     let dir = './Homework5';
 
     let url = new URL( 'http://' + req.headers.host + req.url );
