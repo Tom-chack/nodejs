@@ -5,7 +5,6 @@
 const fs = require('fs');
 const http = require('http');
 
-
 http.createServer( (req, res) => {
 
     let url = new URL( 'http://' + req.headers.host + req.url );
