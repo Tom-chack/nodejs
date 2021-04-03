@@ -2,7 +2,6 @@
 // որոնցում այցելուն կհավաքի անուն և  տեքստ : submit-ից հետո որպես response ստանա իր հավաքած 
 // ինֆորմացիան դաշտերի name հետ որպես JSON response (օգտագործել GET մեթոդը):
 
-const fs = require('fs');
 const http = require('http');
 
 
