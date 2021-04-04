@@ -7,7 +7,7 @@ const {readFileSync} = require('fs');
 
 http.createServer( (req, res) => {
 
-    let text = readFileSync('./homeworks.txt', {encoding:'utf8', flag:'r'});
+    let text = readFileSync('./homeworks.txt', {encoding:'utf8'});
     let html = text.split('\n\r').map( row => '<p hidden>' + row + '</p>' ).join('\n');
 
     res.setHeader("Content-Type", "text/html; charset=utf-8");
