@@ -8,8 +8,8 @@ const {readFileSync} = require('fs');
 http.createServer( (req, res) => {
 
     let text = readFileSync('./homeworks.txt', {encoding:'utf8', flag:'r'});
-    let html = text.toString().split('\n\r').map( row => '<p hidden>' + row + '</p>' ).join('\n');
-    
+    let html = text.split('\n\r').map( row => '<p hidden>' + row + '</p>' ).join('\n');
+
     res.setHeader("Content-Type", "text/html; charset=utf-8");
     res.write('<!doctype html><html><body><div id="homeworks">' + html + '</div></body></html>');
     res.end(script());
