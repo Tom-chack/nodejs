@@ -12,7 +12,6 @@ class UpdateStock extends EventEmitter {
         this.stock = stock;
         console.log(`We have ${this.stock} products in the stock`);
     }
-
     buy( productsCount ){
         this.stock -= productsCount;
         console.log(`New order: ${productsCount} products`);
