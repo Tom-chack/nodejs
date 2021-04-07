@@ -22,16 +22,15 @@ http.createServer( ( req, res ) => {
        form.parse(req, (e, fields, files) => {
             let oldFile = files.myFile.path;
             let newFile = __dirname + '\\upload\\' + random.int(1e5,9e5) + '.' + files.myFile.type.split('/')[1];
-            move(oldFile, newFile, (e) => {
+            move( oldFile, newFile, (e) => {
                 if(e) {
                     res.end( formView( e.message ) );
                 } else {
                     res.end('Moved!');
                 }
             });
-            
        });
-
+       
     } else {
         res.end(formView());
     }
