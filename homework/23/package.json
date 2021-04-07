@@ -1,0 +1,16 @@
+{
+  "name": "homework-23",
+  "version": "1.0.0",
+  "description": "",
+  "main": "homework4.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Artyom Chakhoyan",
+  "license": "ISC",
+  "dependencies": {
+    "formidable": "^1.2.2",
+    "fs-extra": "^9.1.0",
+    "random": "^3.0.3"
+  }
+}
