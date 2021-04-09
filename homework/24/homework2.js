@@ -20,7 +20,7 @@ async function mailer(){
 
 setInterval( () => {
     let date = new Date();
-    if( date.getHours() == 14 ){
+    if( date.getHours() == 12 ){
         mailer().catch( e => console.log(e) );
     }
 }, 5000);
