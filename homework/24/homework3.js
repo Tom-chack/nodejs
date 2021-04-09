@@ -19,15 +19,11 @@ createServer( (req, res) => {
 
             if ( files.attachment.type == 'text/plain' ){
 
-                formEmail = fields.email;
-                formSubject = fields.subject;
-                formText = fields.text;
-
                 let option = {
                     from: 'Artyom <node@profprojects.org>',
-                    to: formEmail,
-                    subject: formSubject,
-                    text: formText,
+                    to: fields.email,
+                    subject: fields.subject,
+                    text: fields.text,
                     attachments: [
                         {
                             filename: files.attachment.name,
@@ -44,7 +40,7 @@ createServer( (req, res) => {
             } else {
                 res.end( formView('The attached file format must be .txt') );
             }
-            
+
         });
 
     } else {
