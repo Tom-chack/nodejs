@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>User Data</title>
+        <style>
+            form{
+                padding: 20px;
+                text-align: center;
+                width: 100%;
+            }
+            input, textarea{
+                width: 40%;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="/save" method="POST">
+            <input type="text" name="name" value="" placeholder="Your name"/><br/><br/>
+            <input type="text" name="email" value="" placeholder="Your email"/><br/><br/>
+            <input type="number" name="number" value="" placeholder="Your phone number"/><br/><br/>
+            <textarea cols="50" rows="5" name="message"></textarea><br/><br/>
+            <input type="submit" name="sned" value="Insert Data">
+        </form>
+    </body>
+</html>
