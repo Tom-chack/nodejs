@@ -7,7 +7,6 @@ const {readFileSync} = require('fs');
 const {IncomingForm} = require('formidable');
 
 
-
 db.connect(config.link, {useUnifiedTopology:true, useNewUrlParser:true})
     .then( result => {
         console.log('Connected to MongoDB!');
@@ -29,7 +28,6 @@ db.connect(config.link, {useUnifiedTopology:true, useNewUrlParser:true})
                         throw error;
                     });
                 });
-
             } else {
                 let html = readFileSync('./public/form.html');
                 res.setHeader('Content-Type', 'text/html');
