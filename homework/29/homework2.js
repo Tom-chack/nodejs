@@ -44,7 +44,7 @@ db.connect(config.link, {useUnifiedTopology:true, useNewUrlParser:true})
 
     function navigation(){
         return `<nav style="text-align:center; padding: 20px;">
-                    <a href="/">Page1</a> | 
+                    <a href="/?page=1">Page1</a> | 
                     <a href="/?page=2">Page2</a> | 
                     <a href="/?page=3">Page3</a> | 
                     <a href="/?page=4">Page4</a>
