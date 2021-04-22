@@ -22,7 +22,6 @@ app.get('/info', (req, res) => {
 });
 
 app.get('/random', (req, res) => {
-
     let rand = ( req.query.min && req.query.max ) ? random.int(+req.query.min, +req.query.max) : '';
     let data = {
         rand,
