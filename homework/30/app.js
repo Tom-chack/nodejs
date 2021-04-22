@@ -13,10 +13,10 @@ app.get('/', (req, res) => {
 
 app.get('/info', (req, res) => {
     data = {
-		name:'Artyom', 
-		email:'artyom@example.com',
+        name:'Artyom', 
+        email:'artyom@example.com',
         title: 'User Info',
-		languages:['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL', 'Node.js', 'MongoDB']
+        languages:['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL', 'Node.js', 'MongoDB']
 	}
     res.render('info', {data});
 });
