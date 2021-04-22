@@ -36,7 +36,7 @@ db.connect(config.link, {useUnifiedTopology:true, useNewUrlParser:true, useCreat
             });
     });
 
-    app.post('/author', (req, res)=> {
+    app.post('/blog', (req, res)=> {
 
         Author.create({
             name: req.body.name,
