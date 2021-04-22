@@ -23,7 +23,8 @@ db.connect(config.link, {useUnifiedTopology:true, useNewUrlParser:true, useCreat
 
         res.write(form);
 
-        Author.find({}, {_id:0}, {createdAt: 'desc'})
+        Author.find({}, {_id:0})
+            .sort('-createdAt')
             .lean()
             .then( authors => {
                 res.write('<ul>');
