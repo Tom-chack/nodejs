@@ -1,0 +1,15 @@
+<%- include('header.ejs', {title:data.title}) %>
+
+<main>
+    <% if( data.rand ){ %>
+        <h2><%= data.rand %></h2>
+    <% } %>
+    <hr>
+    <form action="" method="GET">
+        Min: <input name="min" value="" /><br/><br/>
+        Max: <input name="max" value="" /><br/><br/>
+        <input type="submit" name="sned" value="Send">
+    </form>
+</main>
+
+<%- include('footer.ejs') %>

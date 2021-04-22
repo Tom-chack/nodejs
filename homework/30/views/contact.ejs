@@ -1,0 +1,31 @@
+<%- include('header.ejs', {title:data.title}) %>
+
+<main>
+    <% if( data.name ){ %>
+        
+        <h2>Thnk you for contacting us!</h2>
+        <p>You've contacted <b><%= data.name %></b> &lt;<%= data.email %>&gt;</p>
+        <h3>
+            <b>Title:</b> <%= data.subject %>
+        </h3>
+        <p>
+            <b>Message:</b> <%= data.message %>
+        </p>
+        
+    <% } else { %>
+
+        <form action="/contact" method="POST">
+            Send To Name: <input name="to" value="" /><br/><br/>
+            Send To Email: <input name="email" value="" /><br/><br/>
+            Message Title: <input name="subject" value="" /><br/><br/>
+            Message<br>
+            <textarea cols="50" rows="5" name="message"></textarea><br/><br/>
+            <input type="submit" name="sned" value="Send">
+        </form>
+
+    <% } %>
+    <hr>
+    
+</main>
+
+<%- include('footer.ejs') %>

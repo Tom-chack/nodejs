@@ -1,0 +1,28 @@
+img{
+    max-width: 20%;
+    display: block;
+    margin-top: 10px;
+}
+
+header ul{
+    display: flex;
+    list-style: none;
+}
+
+header ul li{
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+form{
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+input{
+    width: 40%;
+    padding: 10px;
+}
+h2{
+    text-align: center;
+}

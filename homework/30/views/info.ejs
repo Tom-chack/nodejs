@@ -1,0 +1,26 @@
+<%- include('header.ejs', {title:data.title}) %>
+
+<main>
+    
+    <table>
+        <tr>
+            <td><b>Name:</b> <%= data.name %></td>
+        </tr>
+        <tr>
+            <td><b>Email:</b> <%= data.email %></td>
+        </tr>
+        <tr>
+            <td>
+                <b>Skills:</b><br>
+                <ol>
+                    <% data.languages.forEach( lang => { %>
+                        <li><%= lang %></li>
+                    <% }); %>
+                </ol>
+            </td>
+        </tr>
+    </table>
+    
+</main>
+
+<%- include('footer.ejs') %>
