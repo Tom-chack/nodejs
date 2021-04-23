@@ -3,7 +3,7 @@
 
 <main>
   
-    <form action="" id="addTask">
+    <form action="" id="addTask" method="POST">
         <input type="text" name="task" placeholder="Your new task...">
         <input type="submit" name="add" value="Add New Task" />
     </form>
@@ -13,11 +13,13 @@
     <br>
 
     <ul id="taskList">
-        <% todos.forEach( todo => { %>
-
-            <li><%= todo.task %></li>
-
-        <% }) %>
+        <% if( todos.length ) { %>
+            <% todos.forEach( todo => { %>
+                <li><%= todo.task %></li>
+            <% }) %>
+        <% } else { %>
+            <li>No tasks found.</li>
+        <% } %>
     </ul>
 
 

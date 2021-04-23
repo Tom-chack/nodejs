@@ -21,3 +21,8 @@ header ul li{
 main {
   padding: 10px 38px;
 }
+
+main input{
+  padding: 5px 10px;
+}
+
