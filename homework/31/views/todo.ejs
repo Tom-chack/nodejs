@@ -1,0 +1,27 @@
+
+<%- include('header.ejs') %>
+
+<main>
+  
+    <form action="" id="addTask">
+        <input type="text" name="task" placeholder="Your new task...">
+        <input type="submit" name="add" value="Add New Task" />
+    </form>
+
+    <br>
+    <hr>
+    <br>
+
+    <ul id="taskList">
+        <% todos.forEach( todo => { %>
+
+            <li><%= todo.task %></li>
+
+        <% }) %>
+    </ul>
+
+
+
+</main>
+    
+<%- include('footer.ejs') %>
