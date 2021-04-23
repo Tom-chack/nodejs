@@ -4,7 +4,7 @@ const {TODO} = require('../models/todo');
 
 class ToDo {
 
-    async list(){
+    async list(req, res){
 
         try{
             let todos = await TODO.find({}).sort('-updatedAt');
@@ -17,19 +17,19 @@ class ToDo {
 
     }
 
-    get(){
+    get(req, res){
 
     }
 
-    add(){
+    add(req, res){
 
     }
 
-    update(){
+    update(req, res){
 
     }
 
-    remove(){
+    remove(req, res){
 
     }
 

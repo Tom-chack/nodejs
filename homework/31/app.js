@@ -8,7 +8,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var todoRouter = require('./routes/todo');
 
-const {link}=require('./config/')
+const {link} = require('./config/')
 mongoose.connect( link, {useNewUrlParser:true, useUnifiedTopology:true}, (err)=>{
   if(err) throw err;
   console.log(`connected`)
