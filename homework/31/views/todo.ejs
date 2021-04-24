@@ -15,10 +15,8 @@
     <ul id="taskList">
         <% if( todos.length ) { %>
             <% todos.forEach( todo => { %>
-                <li><%= todo.task %></li>
+                <li id="<%= todo.id %>"><%= todo.task %></li>
             <% }) %>
-        <% } else { %>
-            <li>No tasks found.</li>
         <% } %>
     </ul>
 

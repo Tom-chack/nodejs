@@ -26,3 +26,7 @@ main input{
   padding: 5px 10px;
 }
 
+main ul li:hover{
+  cursor: pointer;
+  text-decoration:line-through;
+}

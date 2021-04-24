@@ -49,8 +49,14 @@ class ToDo {
 
     }
 
-    remove(req, res){
-
+    async remove(req, res){
+        try{
+            let result = await TODO.deleteOne({_id:req.body.id});
+            res.json({todo:result.n})
+        }catch(err){
+            console.log(err)
+            res.json({error:err.message})
+        }  
     }
 
 }

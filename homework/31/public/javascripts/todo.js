@@ -30,5 +30,36 @@ form.addEventListener('submit', (e)=>{
     })
     .catch( e => {
         console.log(e.message);
-    })
+    });
 });
+
+let taskList = document.querySelector('#taskList');
+taskList.addEventListener('click', (e) => {
+    if( e.target.tagName == 'LI' && e.target.id){
+        let taskObj = {
+            id: e.target.id
+        }
+        fetch('/todo/delete/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(taskObj)
+        })
+        .then(res => {
+            console.log('Responce: ', res); 
+            return res.json();       
+        }).then( data => {
+            let {error, todo} = data;
+            if(error){
+                alert(error);  return;
+            }
+            if(todo){
+                e.target.remove();
+            }
+        })
+        .catch( e => {
+            console.log(e.message);
+        });
+    }
+})
