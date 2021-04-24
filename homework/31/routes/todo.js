@@ -1,15 +1,16 @@
 
 const express = require('express');
 
-const {list, add, update, remove} = require('../controllers/todo');
+const {list, add1, add2, update, remove} = require('../controllers/todo');
 
 let router = express.Router();
 
 router.get('/', list);
 
-router.post('/', add);
-
-router.post('/add', add);
+// Version 1 - regular form submission
+router.post('/', add1);
+// Version 2 - using fetch() function
+router.post('/add', add2); 
 
 router.post('/update', update);
 

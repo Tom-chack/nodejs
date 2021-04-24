@@ -5,12 +5,10 @@ const {TODO} = require('../models/todo');
 class ToDo {
 
     constructor(){
-        this.list = this.list.bind(this);
-        this.add = this.add.bind(this);
+        this.add1 = this.add1.bind(this);
     }
 
-    async list(req, res, message){
-
+    async list(req, res){
         try{
             let todos = await TODO.find({}).sort('-updatedAt');
             res.render(`todo`, {todos})
@@ -19,25 +17,32 @@ class ToDo {
             console.log(err)
             res.json({error:err.message})
         }
-
     }
 
-    get(req, res){
-
-    }
-
-    async add(req, res){
-        let message = '';
+    async add1(req, res){
         try{
-            TODO.create({
-                task: req.body.task
-            });
-            message = 'Added Successfully!';
+            await TODO.create({task: req.body.task});
         } 
         catch(e) {
-            message = e.message;
+            console.log(e);
         }
-        this.list(req, res, message);
+        this.list(req, res); //Version 1 - regular form submission
+    }
+
+    async add2(req, res){
+        try{
+            console.log(req.body);
+            let newTask = await TODO.create({task: req.body.task});
+            let taskObj = {
+                id: newTask._id,
+                task: newTask.task
+            } 
+            res.json({todo: taskObj});
+        } 
+        catch(e) {
+            let message = e.message;
+            res.json({error: message});
+        }
     }
 
     update(req, res){
