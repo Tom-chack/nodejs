@@ -1,4 +1,7 @@
 const {_ARTICLE} = require('../models/modelArticle');
+const {unlink, access} = require('fs');
+const { throws } = require('assert');
+const path = require('path');
 
 class Admin {
 
@@ -9,17 +12,48 @@ class Admin {
     }
     
     async addArticle(req, res){
-        res.render('article-form');
+        let article = {};
+        res.render('article-form', {article});
+    }
+
+    async editArticle(req, res){
+        let article = await _ARTICLE.findById( req.params.id );
+        res.render('article-form', {article});
+    }
+
+    async updateArticle(req, res){
+        
+        let article = await _ARTICLE.findById( req.params.id );
+        
+        article.title = req.body.title;
+        article.description = req.body.description;
+        article.content = req.body.content;
+        if( req.file ) {
+            if( article.image ){
+                let oldFile = path.join(__dirname, '..', 'public', 'images', article.image);
+                access( oldFile, (err)=>{
+                    if(!err){
+                        unlink( oldFile, (err) => {
+                            if(err) throw err.message;
+                        });
+                    } else{
+                        console.log( err );
+                    }
+                })
+            }
+            article.image = req.file.filename;
+        }
+        await article.save();
+        res.redirect('/admin/');
     }
 
     async saveArticle(req, res){
         try{
-            let image = req.file.filename ? req.file.filename : '';
             let newArticle = await _ARTICLE.create({
                 title: req.body.title,
                 description: req.body.description,
                 content: req.body.content,
-                image: image
+                image: req.file ? req.file.filename : null
             });
             console.log(newArticle);
             res.redirect('/admin/');
