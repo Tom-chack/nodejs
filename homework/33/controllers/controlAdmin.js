@@ -8,7 +8,7 @@ class Admin {
         res.render('admin', {articles});
     }
     
-    addArticle(req, res){
+    async addArticle(req, res){
         res.render('article-form');
     }
 
