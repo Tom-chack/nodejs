@@ -21,7 +21,7 @@ const mongoose=require(`mongoose`);
 const {link}=require(`./config/index`);
 mongoose.connect(link,{ useNewUrlParser:true, useUnifiedTopology:true}, (err)=>{
    if(err) throw err; console.log(`Connected!`);
-})
+});
 
 //Create express APP
 const app = express();
