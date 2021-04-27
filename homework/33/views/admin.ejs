@@ -19,7 +19,7 @@
       </tr>
     <% articles.forEach( article => { %>
       <tr>
-        <td>Image</td>
+        <td><img src="/images/<%= article.image %>" style="height: 30px; width: 50px;"></td>
         <td><%= article.title %></td>
         <td><%= article.description %></td>
         <td><a href="/article/<%= article._id %>" class="btn btn-sm btn-outline-secondary"><i class="far fa-eye"></i> view</a></td>
