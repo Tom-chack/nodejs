@@ -11,8 +11,7 @@ const schema = Schema({
     password: {
         type: String
     }
-}, 
-{timestamps:true});
+}, {timestamps:true});
 
 const _USER = model('User', schema);
 

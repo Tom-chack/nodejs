@@ -61,10 +61,10 @@ app.use(session({
   secret: "ses_secret", //there is no default value, this is a required parameter
   saveUninitialized: true, //A session is uninitialized when it’s new but not modified. Setting this to false reduces server storage usage and comply with laws that require permission before storing cookies.
   cookie: {
-    httpOnly: true,
+    httpOnly: false,
     secure: false,
     sameSite: 'lax',
-    maxAge: 24 * 60 * 60 * 365 * 1000
+    maxAge: 30 * 24 * 60 * 60 * 1000 //1 month
   },
   //store: new RedisStore({ client: redisClient, ttl: 86400}),
   resave: true //This may create race conditions when a client makes 2 parallel requests to our server and changes made to the session on one request may be overwritten when the other request ends.
@@ -74,8 +74,8 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Local Middlewares
-const {localVariables} = require('./middlewares/site')
-app.use(localVariables)
+const {localVariables} = require('./middlewares/site');
+app.use(localVariables);
 
 //Regsitering routes, base path /auth/ for /auth/login and /auth/register/
 app.use('/', indexRouter);

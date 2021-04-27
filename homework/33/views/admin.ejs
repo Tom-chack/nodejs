@@ -3,7 +3,34 @@
 
 <main>
   <h1>Admin Page</h1>
-  <p>Welcome <%= username %>! | <a href="/auth/logout/">Logout</a></p>
+  <p>Welcome <%= user.username %>! | <a href="/auth/logout/">Logout</a></p>
+  <div>
+    <div class="d-flex justify-content-end pb-2">
+      <a href="/admin/add/" class="btn btn-success"><i class="fas fa-plus-circle"></i> &nbsp;Add Article</a>
+    </div>
+    <table class="table w-100">
+      <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>View</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    <% articles.forEach( article => { %>
+      <tr>
+        <td>Image</td>
+        <td><%= article.title %></td>
+        <td><%= article.description %></td>
+        <td><a href="/article/<%= article._id %>" class="btn btn-sm btn-outline-secondary"><i class="far fa-eye"></i> view</a></td>
+        <td><a href="/admin/edit/<%= article._id %>" class="btn btn-sm btn-outline-warning"><i class="far fa-edit"></i> edit</a></td>
+        <td><a href="/admin/delete/<%= article._id %>" class="btn btn-sm btn-outline-danger"><i class="far fa-trash-alt"></i> delete</a></td>
+      </tr>
+    <% }); %>
+      
+
+    </table>
+  </div>
 </main>
     
 <%- include('footer.ejs') %>

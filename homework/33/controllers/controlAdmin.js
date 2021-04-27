@@ -1,10 +1,15 @@
+const {_ARTICLE} = require('../models/modelArticle')
+
 class Admin {
 
-    pageView(req, res){
+    async pageView(req, res){
         console.log(req.session);
-        console.log(req.session.user.username);
-        let username = req.session.user.username;
-        res.render('../views/admin.ejs', {username});
+        
+        let articles = await _ARTICLE.find({}).sort('-createdAt').lean();
+        
+        let user = req.session.user;
+
+        res.render('../views/admin.ejs', {user, articles});
     }
     
 }
