@@ -14,7 +14,7 @@ const schema = Schema({
 }, 
 {timestamps:true});
 
-const _USER = model('User', schema);
+const _USER = model('User', schema, 'hw_32_users');
 
 module.exports = {
     _USER
