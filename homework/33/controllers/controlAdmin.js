@@ -63,6 +63,33 @@ class Admin {
             res.redirect(`/admin/add/`)
         }
     }
+
+    async deleteArticle(req, res){
+        if(req.body._id){
+            try{
+                let article = await _ARTICLE.findById(req.body._id);
+                let deleted = await _ARTICLE.findByIdAndDelete(req.body._id);
+                if( article.image ){
+                    let oldFile = path.join(__dirname, '..', 'public', 'images', article.image);
+                    access( oldFile, (err)=>{
+                        if(!err){
+                            unlink( oldFile, (err) => {
+                                if(err) throw err.message;
+                            });
+                        } else{
+                            console.log( err );
+                        }
+                    })
+                }
+                let info = {id: req.body._id}; 
+                res.json(info);
+            } catch(e){
+                let info = {error: e.message}; 
+                res.json(info);
+            }
+        }
+    }
+
 }
 
 

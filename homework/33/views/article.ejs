@@ -1,0 +1,11 @@
+
+<%- include('header.ejs') %>
+
+<main class="text-center" style="margin:0 auto; width: 50%;">
+  <h2><%= article.title %></h2>
+  <p><img src="/images/<%= article.image %>" style="height: 300px;" /></p>
+  <h5><%= article.description %></h5>
+  <p class="text-justify"><%= article.content %></p>
+</main>
+    
+<%- include('footer.ejs') %>

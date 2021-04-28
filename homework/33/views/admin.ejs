@@ -18,7 +18,7 @@
         <th>Delete</th>
       </tr>
     <% articles.forEach( article => { %>
-      <tr>
+      <tr id="article_<%= article._id %>">
         <td>
           <% if( article.image ) { %>
             <img src="/images/<%= article.image %>" style="height: 30px; width: 50px;">
@@ -30,7 +30,7 @@
         <td><%= article.description %></td>
         <td><a href="/article/<%= article._id %>" class="btn btn-sm btn-outline-secondary"><i class="far fa-eye"></i> view</a></td>
         <td><a href="/admin/edit/<%= article._id %>" class="btn btn-sm btn-outline-warning"><i class="far fa-edit"></i> edit</a></td>
-        <td><a href="/admin/delete/<%= article._id %>" class="btn btn-sm btn-outline-danger"><i class="far fa-trash-alt"></i> delete</a></td>
+        <td><a href="#" class="btn btn-sm btn-outline-danger btn-delete" data-id="<%= article._id %>"><i class="far fa-trash-alt"></i> delete</a></td>
       </tr>
     <% }); %>
       
