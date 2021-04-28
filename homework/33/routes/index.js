@@ -4,8 +4,7 @@ const { viewArticle } = require('../controllers/index');
 const router = express.Router();
 
 router.get('favicon.ico', function(req, res, next) {
-  res.sendStatus(204);
-  next();
+  res.status(204).end();
 });
 
 /* GET home page. */
