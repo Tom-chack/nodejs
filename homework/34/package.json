@@ -8,12 +8,14 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
+    "crypto": "^1.0.1",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "mongoose": "^5.12.6",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "sha256": "^0.2.0"
   }
 }

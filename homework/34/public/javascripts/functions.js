@@ -5,6 +5,7 @@ function submitRegsiter(){
 
         let form = event.target;
         event.preventDefault();
+
         let register = {
             username: form.elements['username'].value,
             email: form.elements['email'].value,
@@ -39,9 +40,10 @@ function submitLogin(){
 
         let form = event.target;
         event.preventDefault();
+
         let login = {
-            email: btoa(form.elements['email'].value),
-            password: btoa(form.elements['password'].value)
+            email: form.elements['email'].value,
+            password: form.elements['password'].value
         }
         fetch('/auth/login', {
             method: 'POST',
@@ -49,7 +51,18 @@ function submitLogin(){
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(login)
-        });
+        })
+        .then( res => res.json() )
+        .then( res => {
+            let {error, tocken} = res;
+            if( error ){
+                viewLogin({message: error});
+            } else {
+                alert(tocken);
+            }
+        }).catch(e => {
+            viewLogin({message: e.message});
+        })
 
     });
 }

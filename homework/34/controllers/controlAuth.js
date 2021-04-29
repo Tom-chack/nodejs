@@ -15,7 +15,7 @@ class Auth {
                 if(!okPassword){
                     return  res.json({error: 'Email or Password is Incorrect'});
                 }
-                //create tocken and send back
+                return res.json({tocken:'Hi!'});
             }
             res.json({error: 'Please insert your email and password'});
         }
@@ -37,10 +37,10 @@ class Auth {
                     email: email,
                     password: bcrypt.hashSync(password),
                 });
-                res.json({success:1});
+                return res.json({success:1});
             } 
             catch(e) {
-                res.json({error: e.message});
+                return res.json({error: e.message});
             }
         }
         res.json({error: 'Please fill all required fields'});
