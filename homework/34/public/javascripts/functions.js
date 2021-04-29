@@ -26,7 +26,7 @@ function submitRegsiter(){
                 viewLogin({message:"You've been successfully registered, please login."});
             }
         }).catch(e => {
-            viewLogin({message: e.message});
+            viewRegister({message: e.message});
         })
 
     });
