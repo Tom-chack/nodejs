@@ -1,0 +1,43 @@
+
+<%- include('header.ejs') %>
+
+<div class="container-fluid p-5" style="border: 1px solid #ccc;">
+
+  <div id="main">
+
+    <div id="profileInfo" class="row mb-2 p-2">
+        <div class="col-sm-1">
+            <img id="_photo" src="/images/<%= user.photo %>">
+        </div>
+        <div>
+            <h4 style="margin: 0; padding: 0;"><%= user.username %></h4>
+            <div class="_edit"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 border p-4">
+            <h5>Messages</h5>
+            <div id="_form">
+                <textarea cols="40" row="5"></textarea>
+                <button class="btn btn-overline-secondary">Send message</button>
+            </div>
+            <div id="_messages">
+                <h5>Online Users</h5>
+                <div data-id="">Meesage 1</div>
+                <div data-id="">Meesage 2</div>
+            </div>
+        </div>
+        <div class="col-sm-4 border p-4">
+            <h5>Online Users</h5>
+            <div id="_online">
+                <div data-id="">User 1</div>
+                <div data-id="">User 1</div>
+            </div>
+        </div>
+    <div>
+
+  </div>
+
+</div>
+    
+<%- include('footer.ejs') %>

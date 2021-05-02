@@ -4,29 +4,29 @@ const mongoose = require('mongoose');
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
+const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
-//Connect to Database
-mongoose.connect( process.env.dbLink, { useNewUrlParser:true, useUnifiedTopology:true}, (err)=>{
-   if(err) throw err;
-   console.log(`connected`)
-});
-
 
 //Import Routers
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/routeAuth');
 
-
 ///////////////////////////////
 const app = express(); ////////
 ///////////////////////////////
 
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+// Database connection
+require('./config/db');
+
+//Passport initialization
+require('./config/pass')(passport);
+app.use(passport.initialize());
+
 
 app.use(logger('dev'));
 app.use(express.json());

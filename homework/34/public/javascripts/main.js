@@ -1,7 +1,11 @@
 
 window.onload = function() {
 
-    
+    if( localStorage.getItem(`_tocken`) ){
+        viewProfile()
+    } else {
+        viewLogin();
+    }
 
     if( navLogin ){
         navLogin.onclick = function(event){
@@ -18,5 +22,12 @@ window.onload = function() {
         }
     }
 
+    if( ~location.href.indexOf('/profile') ){
+        let userId = parseToken('userid');
+        let currentId = location.href.split('/').pop();
+        if( userId == currentId ){
+            viewEditButtons()
+        }
+    }
 
 }

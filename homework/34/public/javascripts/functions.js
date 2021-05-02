@@ -24,7 +24,7 @@ function submitRegsiter(){
             if( error ){
                 viewRegister({message: error});
             } else {
-                viewLogin({message:"You've been successfully registered, please login."});
+                viewLogin({message: "You've been successfully registered, please login."});
             }
         }).catch(e => {
             viewRegister({message: e.message});
@@ -54,11 +54,14 @@ function submitLogin(){
         })
         .then( res => res.json() )
         .then( res => {
-            let {error, tocken} = res;
+            let {error, tocken, user} = res;
             if( error ){
                 viewLogin({message: error});
             } else {
-                alert(tocken);
+                //Save tocken in localstorage
+                tocken = tocken.split(' ')[1];
+                localStorage.setItem('_tocken', tocken);
+                window.location.href = '/profile/' + user._id;
             }
         }).catch(e => {
             viewLogin({message: e.message});

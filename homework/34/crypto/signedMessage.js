@@ -17,4 +17,10 @@ const hashedData = hash.digest('hex')
 const senderPrivateKey = fs.readFileSync( __dirname + '/id_rsa_priv.pem', 'utf-8');
 const signedmessage = encrypt.encryptWithPrivateKey(senderPrivateKey, hashedData);
 
-console.log( hashedData );
+const sendDataPackage = {
+    algorithm: 'sha256',
+    originalData: myData,
+    signedEncryptedData: signedmessage
+}
+
+module.exports.sendDataPackage = sendDataPackage;

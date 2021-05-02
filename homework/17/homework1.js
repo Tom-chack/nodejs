@@ -7,3 +7,5 @@ console.log( 'Total Memory: ' + prettyBytes( os.totalmem() ) );
 console.log( 'Free Memory: ' + prettyBytes( os.freemem() ) );
 
 console.log( 'Used Memory: ' + prettyBytes(os.totalmem() - os.freemem()) );
+
+console.log(os.cpus().length);

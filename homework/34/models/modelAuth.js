@@ -10,6 +10,10 @@ const schema = Schema({
     },
     password: {
         type: String
+    },
+    photo: {
+        type:String,
+        default: 'default.png'
     }
 }, {timestamps:true});
 

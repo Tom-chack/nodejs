@@ -1,21 +1,34 @@
 const {_USER} = require('../models/modelAuth');
-const bcrypt = require('bcryptjs');
+const {passGenerate, passValidate, jwtGenerate} = require('../utils/passUtils');
 
 class Auth {
 
-    async login(req, res){
+    async test(req, res){
 
+        res.json({success: true, message: 'You are authorized!'});
+        
+    }
+
+   
+    async login(req, res){
         try{
             let email = req.body.email;
             let password = req.body.password;
-
             if( email && password ){
                 let user = await _USER.findOne({email:email});
-                let okPassword = bcrypt.compareSync(password, user.password);
-                if(!okPassword){
-                    return  res.json({error: 'Email or Password is Incorrect'});
+                if( !user ){
+                    return res.status(401).json( {success: false, error: 'User is not found!'} );
                 }
-                return res.json({tocken:'Hi!'});
+                if( !passValidate( password, user.password) )  {
+                    return res.status(401).json( {success: false, error: 'Email or Password is Incorrect'} );
+                }
+                const jwt = jwtGenerate(user);
+                return res.json({ success: true, 
+                                  user: user,
+                                  tocken: jwt.token,
+                                  expiresIn: jwt.expires
+                                });
+
             }
             res.json({error: 'Please insert your email and password'});
         }
@@ -24,20 +37,28 @@ class Auth {
         }
     }
 
-    async register(req, res){
 
+    async register(req, res, next){
         let username = req.body.username;
         let email = req.body.email;
-        let password = req.body.password;
-
+        let password = passGenerate(req.body.password);
         if( username && email && password ){
             try {
-                await _USER.create({
+                const newUser = new _USER({
                     username: username,
                     email: email,
-                    password: bcrypt.hashSync(password),
+                    password: password
                 });
-                return res.json({success:1});
+                await newUser.save()
+                    .then(( user ) => {
+                        const jwt = jwtGenerate(user);
+                        return res.json({ success: true, 
+                                          user: user,
+                                          tocken: jwt.token,
+                                          expiresIn: jwt.expires
+                                    });
+                    })
+                    .catch( err => next(err));
             } 
             catch(e) {
                 return res.json({error: e.message});
@@ -45,6 +66,7 @@ class Auth {
         }
         res.json({error: 'Please fill all required fields'});
     }
+
 
 
 }
