@@ -35,7 +35,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Local Middlewares
-const {localVariables} = require('./middlewares/site');
+const localVariables = require('./middlewares/site');
 app.use(localVariables);
 
 // Routers

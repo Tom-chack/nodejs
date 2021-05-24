@@ -60,6 +60,7 @@ function viewRegister( args = {message:''} ){
 }
 
 function viewProfile(){
+
     let view = '';
     fetch('/', {
         method: 'POST',
@@ -83,7 +84,6 @@ function viewProfile(){
     .catch( error => {
         alert(error.message);
     });
-
     
 }
 
@@ -91,8 +91,9 @@ function viewEditButtons(){
     let view = `
         <label for="fieldPhoto">Change Photo: </label> 
         <input type="file" name="photo" id="fieldPhoto" class="border" style="width:200px;"/>
-        <button class="btn btn-outline-secondary btn-sm" style="padding:2px 10px;vertical-align: top;">Save</button>
+        <button id="savePhoto" class="btn btn-outline-secondary btn-sm" style="padding:2px 10px;vertical-align: top;">Save</button>
         `;
     let editPhoto = document.querySelector('#profileInfo ._edit');
     editPhoto.innerHTML = view;
+    updatePhoto();
 }

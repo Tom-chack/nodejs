@@ -5,7 +5,8 @@ class Auth {
 
     async test(req, res){
 
-        res.json({success: true, message: 'You are authorized!'});
+        //res.status(200).json({success: true, message: 'You are authorized!'});
+        res.render('index');
         
     }
 
@@ -23,17 +24,17 @@ class Auth {
                     return res.status(401).json( {success: false, error: 'Email or Password is Incorrect'} );
                 }
                 const jwt = jwtGenerate(user);
-                return res.json({ success: true, 
-                                  user: user,
-                                  tocken: jwt.token,
-                                  expiresIn: jwt.expires
-                                });
+                return res.status(200).json({ success: true, 
+                                              user: user,
+                                              tocken: jwt.token,
+                                              expiresIn: jwt.expires
+                                            });
 
             }
-            res.json({error: 'Please insert your email and password'});
+            res.status(401).json({error: 'Please insert your email and password'});
         }
         catch(e){
-            res.json({error: e.message});
+            res.status(401).json({error: e.message});
         }
     }
 
@@ -52,7 +53,7 @@ class Auth {
                 await newUser.save()
                     .then(( user ) => {
                         const jwt = jwtGenerate(user);
-                        return res.json({ success: true, 
+                        return res.status(200).json({ success: true, 
                                           user: user,
                                           tocken: jwt.token,
                                           expiresIn: jwt.expires
@@ -61,10 +62,10 @@ class Auth {
                     .catch( err => next(err));
             } 
             catch(e) {
-                return res.json({error: e.message});
+                return res.status(401).json({error: e.message});
             }
         }
-        res.json({error: 'Please fill all required fields'});
+        res.status(401).json({error: 'Please fill all required fields'});
     }
 
 

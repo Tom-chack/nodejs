@@ -69,3 +69,35 @@ function submitLogin(){
 
     });
 }
+
+function updatePhoto(){
+    
+    let fieldPhoto = document.querySelector('#fieldPhoto');
+    let userPhoto = document.querySelector('#userPhoto');
+    fieldPhoto.addEventListener('change', (e) =>{
+        let src = URL.createObjectURL(fieldPhoto.files[0]);
+        userPhoto.src = src;
+    });
+
+    let savePhoto = document.querySelector('#savePhoto');
+    savePhoto.addEventListener('click', (e)=>{
+        let form = new FormData();
+        form.append('photo', fieldPhoto.files[0]);
+
+        fetch('/update', {
+            method: 'POST',
+            headers: {
+                //'Content-Type': 'application/json', // no json for form submit
+                'Authorization': "Bearer " + localStorage.getItem('_tocken')
+            },
+            body: form
+        })
+        .then( res => res.json() )
+        .then( data => {
+            userPhoto.src = data.photo;
+        })
+        .catch( error => {
+            alert(error.message);
+        });
+    });
+}

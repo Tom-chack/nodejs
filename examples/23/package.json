@@ -1,0 +1,17 @@
+{
+  "name": "23",
+  "version": "1.0.0",
+  "description": "",
+  "main": "example1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "formidable": "^1.2.2",
+    "mv": "^2.1.1",
+    "random": "^3.0.3"
+  }
+}
