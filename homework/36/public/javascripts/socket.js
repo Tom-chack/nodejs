@@ -40,25 +40,6 @@ if( location.pathname === '/auth/account' ){
         });
     }
     
-    
-    // const startChat = document.querySelector('#startChat');
-    // startChat.addEventListener('click', (e) => {
-    //     if(e.target.tagName === 'BUTTON' ){
-    //         //disconnect from other!
-    //         //socket.disconnect();
-    //         //const room = e.target.dataset.room;
-    //         //socket.auth = { token: cookie.get('x-access'), room };
-    //         socket.auth = { token: cookie.get('x-access') };
-    //         console.log(socket);
-    //         socket.connect();
-    //         // if( room !== 'general' ) {
-    //         //     socket.emit('join room', room);
-    //         // }
-    //     }
-    // });
-    
-    
-    
     const formText = document.querySelector('#_form textarea');
     const formButton = document.querySelector('#_form button');
     const onlineUsers = document.querySelector('#online');
@@ -85,14 +66,6 @@ if( location.pathname === '/auth/account' ){
                 </div>`;
                 
             chatbox.insertAdjacentHTML('beforeend', message);
-            
-            // let message = document.createElement('div');
-            // message.setAttribute('class', '_message border-bottom-1 mb-2 p-1');
-            // message.setAttribute('data-id', data.userid);
-            // message.setAttribute('style', 'background-color: #fff;');
-            // message.innerHTML = data.message;
-            // chatbox.append(message);
-    
             chatbox.scrollTo(0, chatbox.scrollHeight);
         }
     });

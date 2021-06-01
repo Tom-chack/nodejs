@@ -45,24 +45,6 @@ io.use( async (socket, next) =>{
 
 io.on('connection', (socket) => {
 
-    //socket.join(user._id);
-    //io.to(user._id).emit();
-    //io.sockets.in().emit() and socket.broadcast.to().emit()
-    //socket.broadcast.to broadcasts to all sockets in the given room, except to the socket on which it was called while io.sockets.in broadcasts to all sockets in the given room.
-
-    // all sockets in the main namespace
-    // const ids = await io.allSockets();
-
-    // // all sockets in the main namespace and in the "user:1234" room
-    // const ids = await io.in("user:1234").allSockets();
-
-    // // all sockets in the "chat" namespace
-    // const ids = await io.of("/chat").allSockets();
-
-    // // all sockets in the "chat" namespace and in the "general" room
-    // const ids = await io.of("/chat").in("general").allSockets();
-
-
     //Connectioned! ------------------------------------------------------------------------------LOG
     console.log('user connection: ' + socket.id);
     console.log('Room: ' + socket.room);
@@ -71,21 +53,7 @@ io.on('connection', (socket) => {
     if(socket.user && socket.room){
 
         let user = socket.user;
-
         socket.join(socket.room);
-        //socket.leave(room);
-
-        // socket.on('join room', (room) => {
-        //     //Leave other rooms
-        //     if(socket.room) socket.leave(socket.room);
-        //     socket.room = room;
-        //     //Join to the new room
-        //     socket.join(room);
-        //     //notify the new room
-        //     socket.emit('new message', buildMessage({text: `Welcome ${user.username} to room ${socket.room}!`, room: socket.room}));
-        //     socket.broadcast.to(socket.room).emit('new message', buildMessage({text: `${user.username} has joined to room ${room}`, room: socket.room}));
-        //     console.log(socket.rooms);
-        // });
 
         //Update online users list for all users ------------------------------------------------EMIT ALL
         let onlineUsers = new Set();
@@ -96,10 +64,8 @@ io.on('connection', (socket) => {
         io.emit('new online', onlineUsers);
 
         //Broadcast: a new user in the chat -----------------------------------------------------EMIT SELF / BROADCAST
-        //socket.emit('new message', buildMessage({text: `Welcome ${user.username}!`}));
         socket.emit('new message', buildMessage({text: `Welcome ${user.username}!`, room: socket.room}));
         socket.broadcast.to(socket.room).emit('new message', buildMessage({text: `${user.username} has joined to room ${socket.room}`, room: socket.room}) );
-        //socket.broadcast.to('room').emit('new message', buildMessage({text: `${user.username} has joined the chat`}) );
 
         //Get message from client ---------------------------------------------------------------ON
         socket.on('new message', (message) => {
