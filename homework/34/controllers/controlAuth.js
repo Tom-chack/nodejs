@@ -5,8 +5,8 @@ class Auth {
 
     async test(req, res){
 
-        //res.status(200).json({success: true, message: 'You are authorized!'});
-        res.render('index');
+        res.status(200).json({success: true, message: 'You are authorized!'});
+        //res.render('index');
         
     }
 

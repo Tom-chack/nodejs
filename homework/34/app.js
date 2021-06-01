@@ -23,16 +23,15 @@ app.set('view engine', 'ejs');
 // Database connection
 require('./config/db');
 
-//Passport initialization
-require('./config/pass')(passport);
-app.use(passport.initialize());
-
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//Passport initialization
+require('./config/pass')(passport);
+app.use(passport.initialize());
 
 // Local Middlewares
 const localVariables = require('./middlewares/site');
