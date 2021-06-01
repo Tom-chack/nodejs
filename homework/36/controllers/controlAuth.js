@@ -15,9 +15,6 @@ let Auth = class {
     }
 
     async create(req, res){
-        
-        console.log(req.body);
-
         if(typeof req.body.email !== 'undefined'){
             try{
                 let user = new USER({
@@ -54,14 +51,6 @@ let Auth = class {
 
     account(req, res){
         if( res.locals.userid ){
-            
-            //const io = req.app.get("io");
-            //require('../middlewares/chat')(io);
-            // io.on('connection', (socket) => {
-            //     console.log('user connection: ' + socket.id);
-            //     console.log( socket.handshake.auth );
-            // });
-
             res.render('account');
             
         } else {
@@ -73,20 +62,15 @@ let Auth = class {
         if( res.locals.userid && req.file ){
             try{
                 let user = await USER.findById(res.locals.userid).exec();
-
                 let oldPhoto = path.resolve(__dirname, '..', 'uploads', 'photos', user.photo.replace('-50x50', ''));
                 let oldPhotoResized = path.resolve(__dirname, '..', 'public', 'images', 'photos', user.photo);
-
                 user.photo = req.file.resized;
-                
                 await Promise.allSettled([
                     user.save(),
                     fs.unlink(oldPhoto),
                     fs.unlink(oldPhotoResized)
                 ]);
-                
                 return res.status(200).json({photo: '/images/photos/' + user.photo });
-                
             } catch(e){
                 return res.status(400).json({error: e.message})
             }
